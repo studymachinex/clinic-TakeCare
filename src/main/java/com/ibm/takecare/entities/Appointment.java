@@ -1,5 +1,5 @@
 package com.ibm.takecare.entities;
 
-public class Session {
+public class Appointment {
     
 }
