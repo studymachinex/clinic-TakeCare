@@ -1,0 +1,2 @@
+aqui vão ficar os:
+metódos para serem utilizados pelos controllers (resources), por ex: findAll, findById

@@ -1,0 +1,5 @@
+aqui vão ficar:
+classe sessão clinica
+classe cliente
+enum contendo os Status da sessão (lembrar de percorrer esses status utilizando .forEach (lambda expressions) )
+e suas variaveis, por ex: data da sessao, nome do cliente, idade do cliente

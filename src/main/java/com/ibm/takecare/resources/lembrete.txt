@@ -1,0 +1,2 @@
+aqui vão ficar os controllers de requisições HTTP para sessão clinica, e para o cliente
+onde vão ter metodos mapeados (por ex GetMapping) utilizando os services para realizar as requisições 
