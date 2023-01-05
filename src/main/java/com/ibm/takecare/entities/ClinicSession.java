@@ -3,11 +3,19 @@ package com.ibm.takecare.entities;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class ClinicSession {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     // Pesquisar sobre DTO VALIDATION quando definir os endpoints 
     LocalDate date;
     LocalTime time;
@@ -20,6 +28,14 @@ public class ClinicSession {
         this.date = date;
         this.time = time;
         this.sessionDuration = sessionDuration;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public LocalDate getDate() {
