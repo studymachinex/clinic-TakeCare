@@ -1,4 +1,4 @@
-package com.ibm.takecare.resources;
+package com.ibm.takecare.controller;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,17 +10,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.ibm.takecare.entities.ClinicSession;
 import com.ibm.takecare.services.ClinicSessionService;
 
 @RestController
-@RequestMapping("/sessions")
-public class ClinicSessionResource {
+@RequestMapping("/session")
+public class ClinicSessionController {
     
     @Autowired
     private ClinicSessionService service;
 
+    @GetMapping("/welcome")
+    public String x(){
+        return "oi ";
+    }
+    
     // Lista todas as sessoes clinicas
     @GetMapping("/allSessions")
     public List<ClinicSession> searchAll(){
@@ -34,15 +38,20 @@ public class ClinicSessionResource {
         return service.findByDateAndTime(date, time);
     }
 
-    // Requisicao de adição de nova sessão (requisito 1)
-    @PostMapping
+    // Requisicao de adição de nova sessão 
+    @PostMapping("/add")
     public ClinicSession addNewClinicSession(ClinicSession clinicSession){
         return service.addNewSession(clinicSession);
     }
 
-    @PostMapping
+    @PostMapping("/start")
     public String startSession(ClinicSession clinicSession){
         service.startSession();
         return "Sessão iniciada ...";
+    }
+
+    @GetMapping("/test")
+    public List<ClinicSession> test(){
+        return service.test();
     }
 }
