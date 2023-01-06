@@ -3,6 +3,8 @@ package com.ibm.takecare.services;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +34,8 @@ public class ClinicSessionService {
         return clinicSessionRepository.findByDateAndTime(date, time);
     }
     // Starta sessao
-    public ClinicSessionStatus startSession(){
-        return ClinicSessionStatus.SESSION_STARTED;
+    public void startSession(){
+        ClinicSessionStatus status = ClinicSessionStatus.SESSION_STARTED;
     }
 
 }

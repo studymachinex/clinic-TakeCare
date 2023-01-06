@@ -41,8 +41,8 @@ public class ClinicSessionResource {
     }
 
     @PostMapping
-    public ClinicSession startSession(ClinicSession clinicSession){
-        return clinicSession;
-        // return clinicSessionRepository.start();
+    public String startSession(ClinicSession clinicSession){
+        service.startSession();
+        return "Sessão iniciada ...";
     }
 }
