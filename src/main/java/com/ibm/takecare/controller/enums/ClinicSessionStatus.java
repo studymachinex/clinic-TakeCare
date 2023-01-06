@@ -1,4 +1,4 @@
-package com.ibm.takecare.resources.enums;
+package com.ibm.takecare.controller.enums;
 
 public enum ClinicSessionStatus {
     SESSION_STARTED("Session online"),

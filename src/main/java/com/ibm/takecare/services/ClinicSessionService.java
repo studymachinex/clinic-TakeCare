@@ -1,16 +1,15 @@
 package com.ibm.takecare.services;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.ibm.takecare.controller.enums.ClinicSessionStatus;
 import com.ibm.takecare.entities.ClinicSession;
 import com.ibm.takecare.repositories.ClinicSessionRepository;
-import com.ibm.takecare.resources.enums.ClinicSessionStatus;
 
 @Service
 public class ClinicSessionService {
@@ -38,4 +37,19 @@ public class ClinicSessionService {
         ClinicSessionStatus status = ClinicSessionStatus.SESSION_STARTED;
     }
 
+    public List<ClinicSession> test(){
+
+        ClinicSession clinic1 = new ClinicSession
+        (LocalDateTime.parse("2023-01-06T15:00"), LocalDateTime.parse("2023-01-06T15:00")
+        , LocalDateTime.parse("2023-01-06T18:00")
+        );
+        
+        ClinicSession clinic2 = new ClinicSession
+        (LocalDateTime.parse("2022-04-02T15:00"), LocalDateTime.parse("2022-04-02T15:00")
+        , LocalDateTime.parse("2022-04-02T18:00")
+        );
+
+        return clinicSessionRepository.saveAll(Arrays.asList(clinic1, clinic2));
+        
+    }
 }

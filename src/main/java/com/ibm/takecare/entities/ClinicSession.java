@@ -1,8 +1,9 @@
 package com.ibm.takecare.entities;
 
 import java.time.Duration;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,15 +18,19 @@ public class ClinicSession {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    // Pesquisar sobre DTO VALIDATION quando definir os endpoints 
-    LocalDate date;
-    LocalTime time;
-    Duration sessionDuration;
-    //qual a diferença entre "duração da consulta" e "duração da sessão", e o que é "qtde equipos"
-
+    // Pesquisar sobre DTO VALIDATION quando definir os endpoints
+    @Column
+    LocalDateTime date;
+    
+    @Column
+    LocalDateTime time;
+    
+    @Column
+    LocalDateTime sessionDuration;
+    
     public ClinicSession(){}
 
-    public ClinicSession(LocalDate date, LocalTime time, Duration sessionDuration) {
+    public ClinicSession(LocalDateTime date, LocalDateTime time, LocalDateTime sessionDuration) {
         this.date = date;
         this.time = time;
         this.sessionDuration = sessionDuration;
@@ -39,27 +44,27 @@ public class ClinicSession {
         this.id = id;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
-    public LocalTime getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(LocalTime time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 
-    public Duration getSessionDuration() {
+    public LocalDateTime getSessionDuration() {
         return sessionDuration;
     }
 
-    public void setSessionDuration(Duration sessionDuration) {
+    public void setSessionDuration(LocalDateTime sessionDuration) {
         this.sessionDuration = sessionDuration;
     }
 
