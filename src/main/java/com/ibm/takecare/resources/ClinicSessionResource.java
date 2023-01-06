@@ -12,28 +12,37 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.takecare.entities.ClinicSession;
-import com.ibm.takecare.repositories.ClinicSessionRepository;
+import com.ibm.takecare.services.ClinicSessionService;
 
 @RestController
 @RequestMapping("/sessions")
 public class ClinicSessionResource {
     
     @Autowired
-    private ClinicSessionRepository clinicSessionRepository;
-    
+    private ClinicSessionService service;
+
+    // Lista todas as sessoes clinicas
+    @GetMapping("/allSessions")
+    public List<ClinicSession> searchAll(){
+        return service.findAll();
+    }
+
     // Requisicao de sessão por data e horario
     @GetMapping("/searchByDateAndTime")
     public List<ClinicSession> searchSessionByDateAndTime(
         @RequestParam("date") LocalDate date, @RequestParam("time") LocalTime time){
-        return clinicSessionRepository.findByDateAndTime(date, time);
+        return service.findByDateAndTime(date, time);
     }
-
 
     // Requisicao de adição de nova sessão (requisito 1)
     @PostMapping
     public ClinicSession addNewClinicSession(ClinicSession clinicSession){
-        return clinicSessionRepository.save(clinicSession);
-
+        return service.addNewSession(clinicSession);
     }
 
+    @PostMapping
+    public String startSession(ClinicSession clinicSession){
+        service.startSession();
+        return "Sessão iniciada ...";
+    }
 }
